@@ -17,7 +17,7 @@ public class Widget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget);
-        Intent configIntent = new Intent(context, MainActivity.class);
+        Intent configIntent = new Intent(context, CounterActivity.class);
 
         PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
 
