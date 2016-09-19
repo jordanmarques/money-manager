@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.jojo.money_manager"
-        minSdkVersion 13
+        minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+repositories {
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -30,4 +34,5 @@ dependencies {
 
     //Optional: see how to use the utility.
     compile 'com.ogaclejapan.smarttablayout:utils-v13:1.6.1@aar'
+    compile 'com.github.qiugang:EditTag:v1.2.3'
 }
