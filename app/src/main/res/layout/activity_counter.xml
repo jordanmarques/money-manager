@@ -99,10 +99,28 @@
             android:layout_below="@id/commentPanel"
             android:layout_marginBottom="30dp">
 
-            <me.originqiu.library.EditTag
-                android:id="@+id/edit_tag_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Tags"
+                android:textSize="15dp"
+                android:id="@+id/tagLabel"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignBottom="@+id/tagValue"
+                android:layout_toLeftOf="@+id/tagValue"
+                android:layout_toStartOf="@+id/tagValue" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/tagValue"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
 
         </RelativeLayout>

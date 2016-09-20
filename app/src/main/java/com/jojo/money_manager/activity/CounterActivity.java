@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.jojo.money_manager.pojo.History;
 
 import java.text.DateFormat;
 import java.util.Date;
+
 
 public class CounterActivity extends Fragment {
 
@@ -65,7 +67,6 @@ public class CounterActivity extends Fragment {
 
         balanceEditor = (EditText) view.findViewById(R.id.editValue);
         commentEditor = (EditText) view.findViewById(R.id.commentValue);
-
 
         credit.setOnClickListener(new View.OnClickListener() {
             @Override
