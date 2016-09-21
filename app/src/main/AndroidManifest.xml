@@ -20,7 +20,7 @@
 
         <fragment android:name=".activity.HistoryActivity"></fragment>
 
-        <receiver android:name=".activity.Widget">
+        <receiver android:name=".widget.Widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
