@@ -1,14 +1,10 @@
-package com.jojo.money_manager.activity;
+package com.jojo.money_manager.fragment;
 
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +14,7 @@ import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import com.jojo.money_manager.R;
+import com.jojo.money_manager.widget.Widget;
 import com.jojo.money_manager.dao.AccountDao;
 import com.jojo.money_manager.dao.HistoryDao;
 import com.jojo.money_manager.pojo.Account;
@@ -27,7 +24,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 
-public class CounterActivity extends Fragment {
+public class CounterFragment extends Fragment {
 
     private static final boolean CREDIT = true;
     private static final boolean DEBIT = false;
@@ -39,6 +36,7 @@ public class CounterActivity extends Fragment {
     private TextView widgetTextView;
     private EditText balanceEditor;
     private EditText commentEditor;
+    private EditText tagEditor;
     private AccountDao accountDao;
     private HistoryDao historyDao;
 
@@ -46,7 +44,7 @@ public class CounterActivity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.activity_counter, container, false);
+        view = inflater.inflate(R.layout.fragment_counter, container, false);
 
         accountDao = new AccountDao(getActivity());
         historyDao = new HistoryDao(getActivity());
@@ -67,6 +65,7 @@ public class CounterActivity extends Fragment {
 
         balanceEditor = (EditText) view.findViewById(R.id.editValue);
         commentEditor = (EditText) view.findViewById(R.id.commentValue);
+        tagEditor = (EditText) view.findViewById(R.id.tagValue);
 
         credit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,8 +99,7 @@ public class CounterActivity extends Fragment {
             account.debit(value);
             balanceTextView.setText(String.valueOf(account.getBalance()));
 
-            saveAccount();
-            saveHistory(DEBIT);
+           saveAccount(account, DEBIT);
             updateWidget();
             resetEditor();
         }
@@ -114,14 +112,18 @@ public class CounterActivity extends Fragment {
             account.credit(value);
             balanceTextView.setText(String.valueOf(account.getBalance()));
 
-            saveAccount();
-            saveHistory(CREDIT);
+            saveAccount(account, CREDIT);
             updateWidget();
             resetEditor();
         }
     }
 
-    private void saveAccount() {
+    private void saveAccount(Account account, Boolean bool){
+        saveAccount(account);
+        saveHistory(bool);
+    }
+
+    private void saveAccount(Account account) {
         accountDao.insertAccount(account);
     }
 
@@ -131,7 +133,8 @@ public class CounterActivity extends Fragment {
 
         historyDao.insertHistory(new History(symbol + String.valueOf(balanceEditor.getText()),
                 String.valueOf(commentEditor.getText()),
-                extractDate()));
+                extractDate(),
+                String.valueOf(tagEditor.getText())));
     }
 
     private String extractDate() {
@@ -145,6 +148,7 @@ public class CounterActivity extends Fragment {
     private void resetEditor() {
         balanceEditor.setText("");
         commentEditor.setText("");
+        tagEditor.setText("");
     }
 
     private boolean isParsable(String string){

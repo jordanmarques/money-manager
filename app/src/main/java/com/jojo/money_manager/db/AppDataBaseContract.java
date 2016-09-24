@@ -20,6 +20,7 @@ public class AppDataBaseContract {
         public static final String HISTORY_COLUMN_VALUE = "value";
         public static final String HISTORY_COLUMN_COMMENT = "comment";
         public static final String HISTORY_COLUMN_DATE = "date";
+        public static final String HISTORY_COLUMN_TAG = "tag";
 
 
         public static final String CREATE_ACCOUNT_TABLE = "CREATE TABLE IF NOT EXISTS " + ACCOUNT_TABLE + "(" +
@@ -30,6 +31,7 @@ public class AppDataBaseContract {
                 HISTORY_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 HISTORY_COLUMN_VALUE + " VARCHAR," +
                 HISTORY_COLUMN_DATE + " VARCHAR," +
+                HISTORY_COLUMN_TAG + " VARCHAR," +
                 HISTORY_COLUMN_COMMENT +");";
 
 

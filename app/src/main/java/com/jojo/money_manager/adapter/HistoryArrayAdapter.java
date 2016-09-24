@@ -14,8 +14,12 @@ import com.jojo.money_manager.pojo.History;
 import java.util.List;
 
 public class HistoryArrayAdapter extends ArrayAdapter<History>{
+
+    private Context context;
+
     public HistoryArrayAdapter(Context context, int resource, List<History> objects) {
         super(context, resource, objects);
+        this.context = context;
     }
 
     @Override
@@ -28,10 +32,25 @@ public class HistoryArrayAdapter extends ArrayAdapter<History>{
         TextView value = (TextView) line.findViewById(R.id.valueLine);
         TextView comment = (TextView) line.findViewById(R.id.commentLine);
         TextView date = (TextView) line.findViewById(R.id.dateLine);
+        TextView tag = (TextView) line.findViewById(R.id.tagLine);
 
         value.setText(history.getValue());
+
+        if(history.getValue().startsWith("+")){
+            value.setTextColor(context.getResources().getColor(R.color.green));
+
+        }else if(history.getValue().startsWith("-")){
+            value.setTextColor(context.getResources().getColor(R.color.red));
+        }
+
         comment.setText(history.getComment());
         date.setText(history.getDate());
+
+        if(history.getTag().equals("")){
+            tag.setVisibility(View.INVISIBLE);
+        }else{
+            tag.setText(history.getTag());
+        }
 
 
         return line;

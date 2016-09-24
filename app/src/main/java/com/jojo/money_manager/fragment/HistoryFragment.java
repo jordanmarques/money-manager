@@ -1,8 +1,7 @@
-package com.jojo.money_manager.activity;
+package com.jojo.money_manager.fragment;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,7 @@ import com.jojo.money_manager.pojo.History;
 import java.util.Collections;
 import java.util.List;
 
-public class HistoryActivity extends Fragment {
+public class HistoryFragment extends Fragment {
 
     private HistoryDao historyDao;
     private View view;
@@ -25,7 +24,7 @@ public class HistoryActivity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.activity_history, container, false);
+        view = inflater.inflate(R.layout.fragment_history, container, false);
 
         historyDao = new HistoryDao(getActivity());
         refreshHistory();

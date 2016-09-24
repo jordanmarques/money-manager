@@ -30,6 +30,7 @@ public class HistoryDao {
         values.put(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_VALUE, String.valueOf(history.getValue()));
         values.put(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_COMMENT, String.valueOf(history.getComment()));
         values.put(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_DATE, String.valueOf(history.getDate()));
+        values.put(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_TAG, String.valueOf(history.getTag()));
 
         dbInstance.insert(AppDataBaseContract.AppDatabaseEntry.HISTORY_TABLE, null, values);
     }
@@ -45,7 +46,8 @@ public class HistoryDao {
                 History history = new History(
                         cursor.getString(cursor.getColumnIndex(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_VALUE)),
                         cursor.getString(cursor.getColumnIndex(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_COMMENT)),
-                        cursor.getString(cursor.getColumnIndex(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_DATE)));
+                        cursor.getString(cursor.getColumnIndex(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_DATE)),
+                        cursor.getString(cursor.getColumnIndex(AppDataBaseContract.AppDatabaseEntry.HISTORY_COLUMN_TAG)));
 
                 historyList.add(history);
             }while(cursor.moveToNext());

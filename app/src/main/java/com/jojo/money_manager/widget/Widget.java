@@ -1,4 +1,4 @@
-package com.jojo.money_manager.activity;
+package com.jojo.money_manager.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 
 import com.jojo.money_manager.R;
+import com.jojo.money_manager.fragment.CounterFragment;
 
 /**
  * Implementation of App Widget functionality.
@@ -17,7 +18,7 @@ public class Widget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget);
-        Intent configIntent = new Intent(context, CounterActivity.class);
+        Intent configIntent = new Intent(context, CounterFragment.class);
 
         PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
 

@@ -15,12 +15,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
+            android:text="comment"
             android:textStyle="bold"
             android:id="@+id/commentLine"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="tag"
+            android:textStyle="bold"
+            android:id="@+id/tagLine"
+            android:background="@drawable/layout_bg"
+            android:textColor="@color/white"
+            android:padding="3dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -32,7 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
+            android:text="value"
+            android:textStyle="bold"
             android:id="@+id/valueLine"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
@@ -43,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
+            android:text="date"
             android:id="@+id/dateLine"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
