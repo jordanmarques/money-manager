@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Montant"
+                android:text="Amount"
                 android:textSize="15dp"
                 android:id="@+id/valueLabel"
                 android:layout_alignParentTop="false"
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Commentaire"
+                android:text="Comment"
                 android:textSize="15dp"
                 android:id="@+id/commentLabel"
                 android:layout_alignParentTop="false"
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Tag"
+                android:text="Category"
                 android:textSize="15dp"
                 android:id="@+id/tagLabel"
                 android:layout_alignParentTop="false"
@@ -136,17 +136,22 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/plus"/>
+                android:text="+"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/btn_bg"/>
 
             <Button
                 style="?android:attr/buttonStyleSmall"
+                android:layout_marginTop="10dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/debit"
                 android:layout_below="@+id/credit"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/less"/>
+                android:text="-"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/btn_bg"/>
         </RelativeLayout>
 
     </RelativeLayout>
