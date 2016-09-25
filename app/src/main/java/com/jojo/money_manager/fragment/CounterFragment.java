@@ -2,6 +2,7 @@ package com.jojo.money_manager.fragment;
 
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -100,7 +101,7 @@ public class CounterFragment extends Fragment {
             balanceTextView.setText(String.valueOf(account.getBalance()));
 
            saveAccount(account, DEBIT);
-            updateWidget();
+            updateWidget(String.valueOf(account.getBalance()));
             resetEditor();
         }
     }
@@ -113,7 +114,7 @@ public class CounterFragment extends Fragment {
             balanceTextView.setText(String.valueOf(account.getBalance()));
 
             saveAccount(account, CREDIT);
-            updateWidget();
+            updateWidget(String.valueOf(account.getBalance()));
             resetEditor();
         }
     }
@@ -160,12 +161,15 @@ public class CounterFragment extends Fragment {
         }
     }
 
+    private void updateWidget(String count){
+        Intent intent = new Intent(getContext().getApplicationContext(), Widget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        intent.putExtra("COUNT", count);
 
-    private void updateWidget(){
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getActivity());
-        RemoteViews remoteViews = new RemoteViews(getActivity().getPackageName(), R.layout.widget);
-        ComponentName thisWidget = new ComponentName(getActivity(), Widget.class);
-        remoteViews.setTextViewText(R.id.appwidget_text, String.valueOf(account.getBalance()));
-        appWidgetManager.updateAppWidget(thisWidget, remoteViews);
+        int[] ids = AppWidgetManager.getInstance(getContext().getApplicationContext()).getAppWidgetIds(new ComponentName(getContext().getApplicationContext(), Widget.class));
+        if(ids != null && ids.length > 0) {
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+            getContext().getApplicationContext().sendBroadcast(intent);
+        }
     }
 }
